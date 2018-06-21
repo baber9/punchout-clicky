@@ -1,20 +1,63 @@
-import React, { Component } from 'react';
-// import logo from './logo.svg';
+import React from 'react';
+import NavBar from './components/NavBar';
+import Header from './components/Header';
+import Container from './components/Container';
+import Footer from './components/Footer';
+
 import './App.css';
 
-class App extends Component {
+class App extends React.Component {
+
+  state = {
+    score: 0,
+    topScore: 0,
+    status: ''
+  }
+
+  updateScore () {
+    this.setState( (prevState) => {
+      return {
+        score: prevState.score + 1,
+        status: 'correct'
+      }
+    });
+  }
+
+  handleReset (won) {
+    let status = 'incorrect';
+      if (won) {
+        status = '';
+      }
+    
+    let newState = {
+      score: 0,
+      status: status
+    };
+
+    if (this.state.score > this.state.topScore) {
+      newState.topScore = this.state.score;
+    }
+
+    this.setState(newState);
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <NavBar 
+          score = {this.state.score} 
+          topScore = {this.state.topScore} 
+          status = {this.state.status} />
+        <Header />
+        <Container 
+          handleScore = {this.handleScore} 
+          handleReset = {this.handleReset}
+          score = {this.state.score}
+          status={this.state.status} 
+         />
+        <Footer />
       </div>
-    );
+    )
   }
 }
 
