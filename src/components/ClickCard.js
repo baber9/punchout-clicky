@@ -1,32 +1,21 @@
 import React from 'react';
 
-export class ClickCard extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            guessed: false,
-        }
-        this.checkGuess = this.checkGuess.bind(this);
-    }
+const ClickCard = props => (
 
-    checkGuess(e) {
-        this.state.guessed === true ? 
-            e.currentTarget.remove() : 
-            this.setState({ guessed: true });
-    }
-
-
-    render() {
-        return(
-            <div 
-                className='card click-item'
-                key={this.props.imgName}
-                onClick={this.checkGuess}
-            >
-                <img src={this.props.imgSource} alt={this.props.imgName} />
+    <div className="container">
+        <div className="row">
+            <div className="col">
+                <div 
+                    className='card click-item'
+                    value={props.id}
+                    onClick={() => props.handleClick(props.id)}
+                >
+                    <img src={props.src} alt="fighter" />
+                </div>
             </div>
-        )
-    }
-}
+        </div>
+    </div>
+    
+);
 
 export default ClickCard;

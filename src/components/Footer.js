@@ -1,15 +1,13 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = (
 
-    return (
-        <footer>Clicky Game!
-            <div>
-                <img alt='react' src='*'/>
-            </div>
-        </footer>
-    )
+    <footer>Clicky Game!
+        <div>
+            <img alt='react' src='*'/>
+        </div>
+    </footer>
     
-}
+)
 
 export default Footer;
