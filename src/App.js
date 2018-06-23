@@ -33,12 +33,23 @@ class App extends React.Component {
       });
       console.log(this.state.clicked);
     } else {
+
+      // Shake Items
       const shakeItems = document.getElementsByClassName('card');
-      let len = shakeItems !== null ? shakeItems.length : 0,
-      i = 0;
-      for (i; i < len; i++) {
-        shakeItems[i].className += ' shake-horizontal';
+      let len = shakeItems.length;
+
+      // set to shake and shake
+      for (let i=0 ; i < len ; i++) {
+        shakeItems[i].className = 'card click-item shake-horizontal';
       }
+
+      // wait .7 sec and set back to default
+      setTimeout(() => {
+        for (let i=0 ; i < len ; i++) {
+          shakeItems[i].className = 'card click-item';
+        }
+      }, 700);
+
       this.handleReset();
     }
   }
@@ -70,7 +81,7 @@ class App extends React.Component {
       clicked: []
     });
 
-
+    
 
     this.handleShuffle();
   }
@@ -78,6 +89,8 @@ class App extends React.Component {
   handleShuffle = () => {
     const newFighters = this.shuffleFighters(fighters);
     this.setState({ fighters: newFighters });
+
+    
   }
   
   render() {
