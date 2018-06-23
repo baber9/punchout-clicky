@@ -1,3 +1,5 @@
+/* Default Styles */
+
 .App {
   text-align: center;
 }
@@ -22,22 +24,7 @@
   font-size: large;
 }
 
-/* @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-} */
-
-.container {
-    display: -ms-flexbox;
-    display: flex;
-    min-height: 80%;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-bottom: 50px;
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
-}
+/* Background Styles */
 
 body, html {
   height: 100%;
@@ -50,7 +37,77 @@ div#background {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-top: 80px;
+}
+
+@media only screen and (max-width: 1072px) {
+  div#background {
+    height: 100%;
+  }
+}
+
+/* NavBar Styles */
+
+.navbar {
+  display: inline-block;
+}
+
+.navbar ul li {
+  margin: 0;
+  text-align: center;
+}
+
+.score {
+  width: 20%;
+  color: #cec9c0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.5vw;
+  padding: 10px 5px 5px 0;
+}
+
+li.nav-item {
+  padding: 0;
+  width: 330px;
+  margin-right: 0;
+}
+
+.status {
+  width: 60%;
+  color: #cec9c0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.5vw;
+  padding: 10px 5px 5px 5px;
+}
+
+/* Header Styles */
+
+.title {
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+h1.title {
+  font-size: 3vw;
+  margin-top: 100px;
+}
+
+h4.title {
+  font-size: 1.7vw;
+}
+
+/* ClickCard Styles */
+
+.container {
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 80%;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 50px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .click-item {
@@ -81,58 +138,7 @@ div#background {
 	}
 }
 
-.navbar {
-  display: inline;
-}
-
-.navbar li {
-  display: inline-block;
-  padding: 20px 0;
-  text-align: center;
-}
-
-.logo, .score {
-  width: 20%;
-  color: #cec9c0;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 1.5vw;
-}
-
-li.nav-item.logo {
-  padding: 0;
-  width: 330px;
-  height: auto;
-  margin-right: 0;
-}
-
-
-.status {
-  width: 60%;
-  color: #cec9c0;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 1.5vw;
-}
-
-.title {
-  margin: auto;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-family: 'Press Start 2P', cursive;
-}
-
-h1.title {
-  font-size: 3vw;
-}
-
-h4.title {
-  font-size: 1.7vw;
-}
-
-@media only screen and (max-width: 1072px) {
-  div#background {
-    height: 100%;
-  }
-}
+/* ClickCard Shake Styles */
 
 @-webkit-keyframes shake-horizontal {
   0%,
@@ -162,6 +168,7 @@ h4.title {
             transform: translateX(-8px);
   }
 }
+
 @keyframes shake-horizontal {
   0%,
   100% {
@@ -194,4 +201,23 @@ h4.title {
 .shake-horizontal {
 	-webkit-animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 	        animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+/* Footer Styles */
+
+footer {
+  height: 50px;
+  background-color: #343a40;
+  color: #41913e;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+footer div {
+  margin-left: 20px;
+  padding-top: 10px;
+  color: #41913e;
+}
+
+footer div img {
+  width: 40px;
 }
