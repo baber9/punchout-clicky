@@ -1,19 +1,9 @@
 import React from 'react';
-// import NavBar from './components/NavBar';
-// import Header from './components/Header';
-// import Main from './components/Main';
-// import Footer from './components/Footer';
+import NavBar from './components/NavBar';
 import ClickCard from './components/ClickCard';
 import fighters from './fighters.json';
 
 import './App.css';
-
-function shuffleFighters(fighters) {
-  for (let i = 0; i < fighters.length - 1; i++) {
-    let j = Math.floor(Math.random() * (fighters.length + 1));
-    [fighters[i], fighters[j]] = [fighters[j], fighters[i]];
-  }
-}
 
 class App extends React.Component {
 
@@ -25,12 +15,31 @@ class App extends React.Component {
     clicked: []
   }
 
-  handleClick = (id) => {
-    if (this.state.clicked.indexOf(id) !== -1) {
-      this.handleReset();
-    } else {
+  shuffleFighters = (fighters) => {
+    for (let i = 0; i < fighters.length - 1; i++) {
+      let j = Math.floor(Math.random() * (fighters.length));
+      [fighters[i], fighters[j]] = [fighters[j], fighters[i]];
+    }
+  
+    return fighters;
+  }
+
+  handleClick = (id, name, quote) => {
+    if (this.state.clicked.indexOf(id) === -1) {
       this.handleIncrement();
-      this.setState({ clicked: this.state.clicked.concat(id)});
+      this.setState({ 
+        clicked: this.state.clicked.concat(id),
+        gameStatus: name + ":  " + quote
+      });
+      console.log(this.state.clicked);
+    } else {
+      const shakeItems = document.getElementsByClassName('card');
+      let len = shakeItems !== null ? shakeItems.length : 0,
+      i = 0;
+      for (i; i < len; i++) {
+        shakeItems[i].className += ' shake-horizontal';
+      }
+      this.handleReset();
     }
   }
 
@@ -45,52 +54,82 @@ class App extends React.Component {
 
     if (newScore >= this.state.topScore) {
       this.setState({ topScore: newScore });
+    } else if (newScore === 12) {
+      this.setState({ gameStatus: "MAX SCORE!!! YOU WIN!!!" });
     }
 
     this.handleShuffle();
   }
 
   handleReset = () => {
+    
     this.setState({
       score: 0,
       topScore: this.state.topScore,
-      gameStatus: 'Game Over!',
+      gameStatus: 'GAME OVER! Doc Says: "Join the Nintendo Fan Club today Mac!"',
       clicked: []
     });
+
+
 
     this.handleShuffle();
   }
 
   handleShuffle = () => {
-    const newFighters = shuffleFighters(fighters);
+    const newFighters = this.shuffleFighters(fighters);
     this.setState({ fighters: newFighters });
   }
   
   render() {
     return (
 
+      <React.Fragment>
 
+          <NavBar 
+            score={this.state.score} 
+            topScore={this.state.topScore} 
+            gameStatus={this.state.gameStatus} />
+        
+        <div id="background">
+          
+          <div className="container">
 
-      // <div>
-      //   <NavBar score={this.state.score} topScore={this.state.topScore} status={this.state.gameStatus} />
-      //   <Header />
-      //   {/* <Main 
-      //     handleScore = {this.handleScore} 
-      //     handleReset = {this.handleReset}
-      //     score = {this.state.score}
-      //     status={this.state.status} 
-      //    /> */}
-        <div>
-          {this.state.fighters.map(fighter => (
-                  <ClickCard 
-                    src={fighter.src}
-                    key={fighter.id} />
-              )
-          )};
+            <header>
+              <h1 className="title">Punch-Out Clicky</h1>
+              <h4 className="title">Click on an image to earn points, but don't click on any image more than once!</h4>
+            </header>
+
+            <div className="row">
+              <div className="col">
+
+                {this.state.fighters.map(fighter => (
+                        <ClickCard 
+                          key={fighter.id}
+                          handleClick={this.handleClick}
+                          handleIncrement={this.handleIncrement}
+                          handleReset={this.handleReset}
+                          handleShuffle={this.handleShuffle}
+                          name={fighter.name}
+                          quote={fighter.quote}
+                          id={fighter.id}
+                          image={fighter.src} />
+                    )
+                )};
+
+              </div>
+            </div>
+          </div>
         </div>
         
-      //   <Footer />
-      // </div>
+        {/* <footer>Clicky Game!
+          <div>
+            <img alt='react' src='*'/>
+          </div>
+        </footer> */}
+
+
+      </React.Fragment>
+
     )
   }
 }

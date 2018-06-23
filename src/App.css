@@ -22,14 +22,10 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-
-
-element.style {
-}
+} */
 
 .container {
     display: -ms-flexbox;
@@ -37,10 +33,24 @@ element.style {
     min-height: 80%;
     flex-wrap: wrap;
     justify-content: center;
-    padding-top: 50px;
     padding-bottom: 50px;
     width: 90%;
     margin: 0 auto;
+    text-align: center;
+}
+
+body, html {
+  height: 100%;
+}
+
+div#background {
+  background-image: url("./images/training.jpg");
+  background-color: #43bff9;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 80px;
 }
 
 .click-item {
@@ -48,13 +58,27 @@ element.style {
   background-position: 50%;
   height: 180px;
   width: 180px;
-  margin: 8px 25px;
+  margin: 25px 25px;
   border: 5px solid #f1f1f1;
   border-radius: 3px;
-  -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
   box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
   cursor: pointer;
   display: inline-block;
+}
+
+.click-item:hover img {
+  opacity: 1;
+  -webkit-animation: flash 1.5s;
+  animation: flash 1.5s;
+}
+
+@-webkit-keyframes flash {
+  0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 .navbar {
@@ -64,6 +88,110 @@ element.style {
 .navbar li {
   display: inline-block;
   padding: 20px 0;
-  width: 33.3%;
   text-align: center;
+}
+
+.logo, .score {
+  width: 20%;
+  color: #cec9c0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.5vw;
+}
+
+li.nav-item.logo {
+  padding: 0;
+  width: 330px;
+  height: auto;
+  margin-right: 0;
+}
+
+
+.status {
+  width: 60%;
+  color: #cec9c0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.5vw;
+}
+
+.title {
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+h1.title {
+  font-size: 3vw;
+}
+
+h4.title {
+  font-size: 1.7vw;
+}
+
+@media only screen and (max-width: 1072px) {
+  div#background {
+    height: 100%;
+  }
+}
+
+@-webkit-keyframes shake-horizontal {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  80% {
+    -webkit-transform: translateX(8px);
+            transform: translateX(8px);
+  }
+  90% {
+    -webkit-transform: translateX(-8px);
+            transform: translateX(-8px);
+  }
+}
+@keyframes shake-horizontal {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  80% {
+    -webkit-transform: translateX(8px);
+            transform: translateX(8px);
+  }
+  90% {
+    -webkit-transform: translateX(-8px);
+            transform: translateX(-8px);
+  }
+}
+
+.shake-horizontal {
+	-webkit-animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	        animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }

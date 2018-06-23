@@ -2,19 +2,14 @@ import React from 'react';
 
 const ClickCard = props => (
 
-    <div className="container">
-        <div className="row">
-            <div className="col">
+    
                 <div 
                     className='card click-item'
-                    value={props.id}
-                    onClick={() => props.handleClick(props.id)}
+                    onClick={() => props.handleClick(props.id, props.name, props.quote)}
                 >
-                    <img src={props.src} alt="fighter" />
+                    <img src={props.image} alt="fighter" />
                 </div>
-            </div>
-        </div>
-    </div>
+            
     
 );
 

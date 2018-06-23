@@ -2,60 +2,84 @@
     {
         "id": 1,
         "src": "./images/bald-bull.jpg",
+        "quote": "'My barber didn't know when to quit, do you?'",
+        "name": "Bald Bull",
         "clicked": false
     },
     {
         "id": 2,
-        "src": "./images/doc-louis.jpg",
+        "src": "./images/mike-tyson.jpg",
+        "name": "Mike Tyson",
+        "quote": "'They say I can't lose. I say you can't win!'",
         "clicked": false
     },
     {
         "id": 3,
         "src": "./images/don-flamenco.jpg",
+        "name": "Don Flamenco",
+        "quote": "'Hey! Mr. Referee Mario I like your hair!'",
         "clicked": false
     },
     {
         "id": 4,
         "src": "./images/glass-joe.jpg",
+        "name": "Glass Joe",
+        "quote": "'Watch the jaw! Don't hit the jaw!'",
         "clicked": false
     },
     {
         "id": 5,
+        "name": "Great Tiger",
+        "quote": "'Beware my tiger punch.'",
         "src": "./images/great-tiger.jpg",
         "clicked": false
     },
     {
         "id": 6,
+        "name": "King Hippo",
+        "quote": "'Ha Ha Ha! I'm the king! Ha Ha Ha!'",
         "src": "./images/king-hippo.jpg",
         "clicked": false
     },
     {
         "id": 7,
+        "name": "Little Mac",
+        "quote": "'I'm tired Doc! (When the round is over)'",
         "src": "./images/little-mac.jpg",
         "clicked": false
     },
     {
         "id": 8,
+        "name": "Mr Sandman",
+        "quote": "'Tell your face(!)... To leave my fists alone!'",
         "src": "./images/mr-sandman.jpg",
         "clicked": false
     },
     {
         "id": 9,
+        "name": "Piston Honda",
+        "quote": "'I'll give you a TKO from Tokyo!'",
         "src": "./images/piston-honda.jpg",
         "clicked": false
     },
     {
         "id": 10,
+        "name": "Soda Popinski",
+        "quote": "'I can't drive, so I'm gonna walk all over you.'",
         "src": "./images/soda-popinski.jpg",
         "clicked": false
     },
     {
         "id": 11,
+        "name": "Super Macho Man",
+        "quote": "'Dude!'",
         "src": "./images/super-macho-man.jpg",
         "clicked": false
     },
     {
         "id": 12,
+        "name": "Von Kaiser",
+        "quote": "'Surrender! Or I will conquer you!'",
         "src": "./images/von-kaiser.jpg",
         "clicked": false
     }
