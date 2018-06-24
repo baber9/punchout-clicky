@@ -28,12 +28,13 @@
 
 body, html {
   height: 100%;
+  background-color: #373d42;
 }
 
 div#background {
   background-image: url("./images/training.jpg");
   background-color: #43bff9;
-  height: 100vh;
+  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
