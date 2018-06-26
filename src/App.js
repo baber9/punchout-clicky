@@ -30,16 +30,48 @@ class App extends React.Component {
 
   // METHOD: handles click event
   handleClick = (id, name, quote) => {
+
+    // set constants for titles for use during win and reset
+    const h1Title = document.getElementById('h1-title');
+    const h2Title = document.getElementById('h2-title');
+
+    // remove win img (if shown)
+    if (h1Title.style.display === 'none') {
+      h1Title.style.display = 'block';
+      h2Title.style.marginTop = '40px';
+      h2Title.innerHTML = "Click on an image to earn points, but don't click on any image more than once!";
+    }
     
     // if id is not in clicked array
     if (this.state.clicked.indexOf(id) === -1) {
+      
       this.handleIncrement();
-      this.setState({ 
-        clicked: this.state.clicked.concat(id),
-        gameStatus: name + " says " + quote
-      });
-      console.log(this.state.clicked);
+      
+      const stateObj = {};
+      stateObj.clicked = this.state.clicked.concat(id);
 
+      // NESTED IF: show fighter quote 11
+      if (this.state.score < 11) {
+        stateObj.gameStatus = name + " says " + quote;
+        this.setState(stateObj);
+      //  max score - winner!
+      } else {
+
+        // set winImg
+        const winImg = '<img src="..\\images\\tko.png" id="tko" alt="WINNER" />'
+
+        // hide h1Title, change h2Title Text, display tko img
+        h1Title.style.display = 'none';
+        h2Title.style.marginTop = '100px';
+        h2Title.innerHTML = winImg + "Top Score! Congrats!";
+
+        stateObj.gameStatus = "WINNER!";
+
+        this.setState(stateObj);
+        this.handleReset();
+
+      }
+      
     } else {
 
       // Shake Items
@@ -64,21 +96,21 @@ class App extends React.Component {
 
   // METHOD: handles incementing score
   handleIncrement = () => {
-    
     const newScore = this.state.score + 1;
-    
-    // setState to new score and clear status
+
+    // set stateObj score to newScore
     this.setState({
-      score: newScore,
-      gameStatus: ''
+      score: newScore
     });
-
+    console.log('topScore: ', this.state.topScore);
+    console.log('this.state.score: ', this.state.score);
+    console.log(newScore >= this.state.topScore);
+    // check if high score
     if (newScore >= this.state.topScore) {
-      this.setState({ topScore: newScore });
-
-    // if score is top score, change status to message
-    } else if (newScore === 12) {
-      this.setState({ gameStatus: "MAX SCORE!!! YOU WIN!!!" });
+      console.log('newScore: ', newScore);
+      this.setState({
+        topScore: newScore + 1
+      });
     }
 
     this.handleShuffle();
@@ -86,15 +118,20 @@ class App extends React.Component {
 
   // METHOD: handles stat resets and game over message
   handleReset = () => {
-    
-    this.setState({
-      score: 0,
-      topScore: this.state.topScore,
-      gameStatus: "GAME OVER! Doc says 'Join the Nintendo Fan Club today Mac!'",
-      clicked: []
-    });
+    // console.log('score: ', this.state.score);
+    // console.log('topScore: ', this.state.topScore); console.log('clicked: ', this.state.clicked);
+    // console.log('gameStatus: ', this.state.gameStatus);
+    let stateObj = {};
 
-    
+    if (this.state.score < 11) {
+      stateObj.gameStatus = "GAME OVER! Doc says 'Join the Nintendo Fan Club today Mac!'";
+    }
+
+    stateObj.score = 0;
+    stateObj.topScore = this.state.topScore;
+    stateObj.clicked = [];
+
+    this.setState(stateObj);
 
     this.handleShuffle();
   }
@@ -123,8 +160,8 @@ class App extends React.Component {
           <div className="container">
 
             <header>
-              <h1 className="title">Punch-Out Clicky</h1>
-              <h4 className="title">Click on an image to earn points, but don't click on any image more than once!</h4>
+              <h1 className="title" id="h1-title">Punch-Out Clicky</h1>
+              <h4 className="title" id="h2-title">Click on an image to earn points, but don't click on any image more than once!</h4>
             </header>
 
             <div className="row">
