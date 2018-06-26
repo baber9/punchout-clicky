@@ -102,33 +102,34 @@ class App extends React.Component {
     this.setState({
       score: newScore
     });
-    console.log('topScore: ', this.state.topScore);
-    console.log('this.state.score: ', this.state.score);
-    console.log(newScore >= this.state.topScore);
     // check if high score
     if (newScore >= this.state.topScore) {
-      console.log('newScore: ', newScore);
       this.setState({
-        topScore: newScore + 1
+        topScore: newScore
       });
     }
+
+    // if (newScore === 12) {
+    //   this.setState({
+    //     topScore: newScore + 1
+    //   });
+    // }
 
     this.handleShuffle();
   }
 
   // METHOD: handles stat resets and game over message
   handleReset = () => {
-    // console.log('score: ', this.state.score);
-    // console.log('topScore: ', this.state.topScore); console.log('clicked: ', this.state.clicked);
-    // console.log('gameStatus: ', this.state.gameStatus);
     let stateObj = {};
 
     if (this.state.score < 11) {
       stateObj.gameStatus = "GAME OVER! Doc says 'Join the Nintendo Fan Club today Mac!'";
+      stateObj.topScore = this.state.topScore;
+    } else {
+      stateObj.topScore = 12;
     }
 
     stateObj.score = 0;
-    stateObj.topScore = this.state.topScore;
     stateObj.clicked = [];
 
     this.setState(stateObj);
